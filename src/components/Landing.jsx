@@ -1,6 +1,9 @@
 import React from "react";
 
 const Landing = () => {
+
+
+
   return (
     <div id="main">
       <div className="header__container">
@@ -21,7 +24,7 @@ const Landing = () => {
               className="search__field"
               placeholder="Search by movie or series title"
             />
-            <button className="btn btn--search" onclick="movieSearch()">
+            <button className="btn btn--search" onClick="movieSearch()">
               Search
             </button>
           </form>
