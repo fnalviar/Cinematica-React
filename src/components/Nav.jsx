@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Nav = () => {
   return (
     <div className="landing">
-      <div className="nav">
+      <nav>
         <figure className="logo__container">
           <img src={logo} alt="Logo" className="film-logo" />
           <h2 className="company-name">Cinematica</h2>
@@ -22,14 +22,16 @@ const Nav = () => {
               Search
             </Link>
           </li>
-          <li to="/" className="nav__link">
-            <Link className="nav__link--anchor">Contact Us</Link>
+          <li className="nav__link">
+            <Link to="/" className="btn nav__link--anchor nav__link--primary">
+              Contact Us
+            </Link>
           </li>
+          <button className="">
+            <FontAwesomeIcon icon="bars" />
+          </button>
         </ul>
-        <button className="btn__menu">
-          <FontAwesomeIcon icon="bars" />
-        </button>
-      </div>
+      </nav>
     </div>
   );
 };
