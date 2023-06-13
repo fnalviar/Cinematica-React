@@ -3,28 +3,35 @@ import React, { useEffect, useState } from "react";
 
 const Movies = () => {
   const [post, setPost] = useState([]);
+  const [userInput, setUserInput] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [movieData, getMovieData] = useState([]);
+
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
   let movieDataList = [];
-  const keyword = "Ant";
 
-  async function fetchMovies() {
-    const { data } = await axios.get(`${url}?s=${keyword}&apikey=${apiKey}`);
-    console.log("data", data);
-    movieDataList = data.Search;
-    console.log("movieDataList", movieDataList);
-    const imdbID = "tt0478970"; // Ant-Man
-    const response = await axios.get(`${url}?i=${imdbID}&apikey=${apiKey}`);
-    console.log("imdbID data", response);
+  async function fetchMovies(userInput) {
+    console.log("userInput", userInput);
+    setLoading(true);
+
+    try {
+      const { data } = await axios.get(
+        `${url}?s=${userInput}&apikey=${apiKey}`
+      );
+      console.log("data", data);
+      setPost(data);
+      console.log("post", post);
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  function movieSearch() {
-    
-  }
+    fetchMovies(userInput);
+  }, [userInput]);
 
   return (
     <>
@@ -35,8 +42,13 @@ const Movies = () => {
             type="text"
             className="search__field"
             placeholder="Search by movie or series title"
+            onChange={(event) => setUserInput(event.target.value)}
+            value={userInput}
           />
-          <button className="btn btn--search" onClick={movieSearch}>
+          <button
+            className="btn btn--search"
+            onClick={() => fetchMovies(userInput)}
+          >
             Search
           </button>
         </form>
