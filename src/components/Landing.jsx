@@ -24,7 +24,7 @@ const Landing = () => {
               className="search__field"
               placeholder="Search by movie or series title"
             />
-            <button className="btn btn--search" onClick="movieSearch()">
+            <button className="btn btn--search">
               Search
             </button>
           </form>

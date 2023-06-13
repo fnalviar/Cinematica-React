@@ -1,10 +1,26 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Movies = () => {
+  const [post, setPost] = useState([]);
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
+  let movieDataList = [];
+  const keyword = "Ant";
 
-  
+  async function fetchMovies() {
+    const { data } = await axios.get(`${url}?s=${keyword}&apikey=${apiKey}`);
+    console.log("data", data);
+    movieDataList = data.Search;
+    console.log("movieDataList", movieDataList);
+    const imdbID = "tt0478970"; // Ant-Man
+    const response = await axios.get(`${url}?i=${imdbID}&apikey=${apiKey}`);
+    console.log("imdbID data", response);
+  }
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
 
   return (
     <div id="search__result">
@@ -12,8 +28,12 @@ const Movies = () => {
         <h2 id="results__number" className="results__title">
           Results
         </h2>
-        <select className="sort__elements" id="filter" onchange="sortResult(event)">
-          <option value="" disabled selected>
+        <select
+          className="sort__elements"
+          id="filter"
+          //   onChange="sortResult(event)"
+        >
+          <option value="" disabled>
             Sort
           </option>
           <option value="ASCENDING_TITLE">Title, A-Z</option>
@@ -25,11 +45,7 @@ const Movies = () => {
       <div id="movieResults" className="row">
         <div className="result__container">
           <figure className="movie__img__container">
-            <img
-              src=""
-              alt="Movie Image"
-              className="movie__img"
-            />
+            <img src="" alt="Movie Image" className="movie__img" />
           </figure>
           <div id="movie__description" className="movie__description">
             <h2 className="movie__title">
