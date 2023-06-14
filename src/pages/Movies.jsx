@@ -2,16 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Movies = () => {
-  const [post, setPost] = useState([]);
-  const [userInput, setUserInput] = useState([]);
+  const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [movieData, getMovieData] = useState([]);
+  const [movieList, setMovieList] = useState([]);
 
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
-  let movieDataList = [];
 
-  async function fetchMovies(userInput) {
+  async function fetchMovies() {
     console.log("userInput", userInput);
     setLoading(true);
 
@@ -19,9 +17,10 @@ const Movies = () => {
       const { data } = await axios.get(
         `${url}?s=${userInput}&apikey=${apiKey}`
       );
-      console.log("data", data);
-      setPost(data);
-      console.log("post", post);
+      // console.log("data", data);
+      // console.log("data.Search", data.Search);
+      setMovieList(data.Search);
+      console.log("movieList", movieList);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -30,8 +29,15 @@ const Movies = () => {
   }
 
   useEffect(() => {
-    fetchMovies(userInput);
-  }, [userInput]);
+    if (userInput !== "") {
+      fetchMovies(userInput);
+    }
+  }, []);
+
+  function searchHandler(event) {
+    event.preventDefault();
+    fetchMovies();
+  }
 
   return (
     <>
@@ -45,10 +51,7 @@ const Movies = () => {
             onChange={(event) => setUserInput(event.target.value)}
             value={userInput}
           />
-          <button
-            className="btn btn--search"
-            onClick={() => fetchMovies(userInput)}
-          >
+          <button className="btn btn--search" onClick={searchHandler}>
             Search
           </button>
         </form>
@@ -72,19 +75,21 @@ const Movies = () => {
             <option value="NEWEST_TO_OLDEST">Year, Newest to Oldest</option>
           </select>
         </div>
-        <div id="movieResults" className="row">
-          <div className="result__container">
-            <figure className="movie__img__container">
-              <img src="" alt="Movie Image" className="movie__img" />
-            </figure>
-            <div id="movie__description" className="movie__description">
-              <h2 className="movie__title">
-                <i> Movie Title</i>
-              </h2>
-              <h2 className="movie__year">Movie Year</h2>
+        {movieList.map((movie) => (
+          <div id="movieResults" className="row" key={movie.imdbID}>
+            <div className="result__container">
+              <figure className="movie__img__container">
+                <img src={movie.Poster} alt="Movie Image" className="movie__img" />
+              </figure>
+              <div id="movie__description" className="movie__description">
+                <h2 className="movie__title">
+                  <i> {movie.Title} </i>
+                </h2>
+                <h2 className="movie__year">{movie.Year}</h2>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </>
   );
