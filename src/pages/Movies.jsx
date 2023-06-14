@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Movies = () => {
+const Movies = (movie) => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [movieList, setMovieList] = useState([]);
@@ -17,8 +17,6 @@ const Movies = () => {
       const { data } = await axios.get(
         `${url}?s=${userInput}&apikey=${apiKey}`
       );
-      // console.log("data", data);
-      // console.log("data.Search", data.Search);
       setMovieList(data.Search);
       console.log("movieList", movieList);
     } catch (error) {
@@ -37,6 +35,21 @@ const Movies = () => {
   function searchHandler(event) {
     event.preventDefault();
     fetchMovies();
+  }
+
+  function filterMovies(filter) {
+    const sortedMovies = [...movieList];
+
+    if (filter === "ASCENDING_TITLE") {
+      sortedMovies.sort((a, b) => a.Title.localeCompare(b.Title));
+    } else if (filter === "DESCENDING_TITLE") {
+      sortedMovies.sort((a, b) => b.Title.localeCompare(a.Title));
+    } else if (filter === "OLDEST_TO_NEWEST") {
+      sortedMovies.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
+    } else if (filter === "NEWEST_TO_OLDEST") {
+      sortedMovies.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
+    }
+    setMovieList(sortedMovies);
   }
 
   return (
@@ -64,7 +77,8 @@ const Movies = () => {
           <select
             className="sort__elements"
             id="filter"
-            //   onChange="sortResult(event)"
+            defaultValue="DEFAULT"
+            onChange={(event) => filterMovies(event.target.value)}
           >
             <option value="" disabled>
               Sort
@@ -79,7 +93,11 @@ const Movies = () => {
           <div id="movieResults" className="row" key={movie.imdbID}>
             <div className="result__container">
               <figure className="movie__img__container">
-                <img src={movie.Poster} alt="Movie Image" className="movie__img" />
+                <img
+                  src={movie.Poster}
+                  alt="Movie Image"
+                  className="movie__img"
+                />
               </figure>
               <div id="movie__description" className="movie__description">
                 <h2 className="movie__title">
