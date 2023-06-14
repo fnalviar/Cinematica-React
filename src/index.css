@@ -44,7 +44,8 @@ button {
 
 .landing,
 #main,
-#search__result {
+#search__result,
+.movie__body {
   padding: 0 16px;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -526,6 +527,13 @@ nav {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/*   
+  MOVIE SELECTED SECTION
+*/
+.movie__selected {
+  display: flex;
 }
 
 /* 

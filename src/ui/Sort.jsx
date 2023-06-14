@@ -2,26 +2,23 @@ import React, { useState } from "react";
 
 const Sort = ({ movieList: initialMovieList }) => {
   const [movies, setMovies] = useState([initialMovieList]);
+  const [movieList, setMovieList] = useState([]);
 
   function filterMovies(filter) {
+    const sortedMovies = [...movieList];
+
     if (filter === "ASCENDING_TITLE") {
-      console.log("ASCENDING TITLE");
-      setMovies(movies.slice().sort((a, b) => a.Title.localeCompare(b.Title)));
+      sortedMovies.sort((a, b) => a.Title.localeCompare(b.Title));
     } else if (filter === "DESCENDING_TITLE") {
-      console.log("DESCENDING TITLE");
-      setMovies(movies.slice().sort((a, b) => b.Title.localeCompare(a.Title)));
+      sortedMovies.sort((a, b) => b.Title.localeCompare(a.Title));
     } else if (filter === "OLDEST_TO_NEWEST") {
-      console.log("OLDEST TO NEWEST");
-      setMovies(
-        movies.slice().sort((a, b) => parseInt(a.Year) - parseInt(b.Year))
-      );
+      sortedMovies.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
     } else if (filter === "NEWEST_TO_OLDEST") {
-      console.log("NEWEST TO OLDEST");
-      setMovies(
-        movies.slice().sort((a, b) => parseInt(b.Year) - parseInt(a.Year))
-      );
+      sortedMovies.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
     }
+    setMovieList(sortedMovies);
   }
+
   return (
     <>
       <div className="sort__container">
