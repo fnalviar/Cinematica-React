@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Movies = (movie) => {
+const Movies = (movies) => {
+  let navigate = useNavigate();
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [movieList, setMovieList] = useState([]);
+  const [movie, setMovie] = useState();
 
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
@@ -91,7 +94,7 @@ const Movies = (movie) => {
         </div>
         {movieList.map((movie) => (
           <div id="movieResults" className="row" key={movie.imdbID}>
-            <div className="result__container">
+            <div className="result__container" onClick={() => navigate(`/movie/${movie.imdbID}`)}>
               <figure className="movie__img__container">
                 <img
                   src={movie.Poster}

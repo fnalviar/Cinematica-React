@@ -18,8 +18,12 @@ const Nav = () => {
     <div className="landing">
       <nav>
         <figure className="logo__container">
-          <img src={logo} alt="Logo" className="film-logo" />
-          <h2 className="company-name">Cinematica</h2>
+          <Link to="/">
+            <img src={logo} alt="Logo" className="film-logo" />
+          </Link>
+          <Link to="/">
+            <h2 className="company-name">Cinematica</h2>
+          </Link>
         </figure>
         <ul className="nav__links">
           <li className="nav__link">
