@@ -40,7 +40,7 @@ const MovieInfo = () => {
               <>
                 <figure className="movie__selected--figure">
                   <img
-                    src="https://m.media-amazon.com/images/M/MV5BMjM2NTQ5Mzc2M15BMl5BanBnXkFtZTgwNTcxMDI2NTE@._V1_SX300.jpg"
+                    src={movieSelected.Poster}
                     alt="Movie Image"
                     className="movie__selected--img"
                   ></img>
