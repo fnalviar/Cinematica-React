@@ -22,13 +22,13 @@ const Movies = () => {
         `${url}?s=${userInput}&apikey=${apiKey}`
       );
       setMovieList(data.Search);
+      navigate(`/movies/${userInput}`);
       console.log("movieList", movieList);
     } catch (error) {
       console.log(error.message);
     } finally {
       setLoading(false);
     }
-    // navigate(`movies/${userInput}`);
   }
 
   useEffect(() => {
@@ -69,7 +69,9 @@ const Movies = () => {
             onChange={(event) => setUserInput(event.target.value)}
             value={userInput}
           />
-          <button className="btn btn--search" onClick={searchHandler}>
+          <button className="btn btn--search" 
+          onClick={searchHandler}
+          >
             Search
           </button>
         </form>

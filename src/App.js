@@ -11,9 +11,9 @@ function App() {
         <Nav />
         <Routes>
         <Route path="/" element={<Home />} />
-          <Route path="/movie/:imdbID" element={<MovieInfo />} />
-          <Route path="/movies/:userInput" element={<Movies />} />
+          <Route path="/movie/:imdbID" exact element={<MovieInfo />} />
           {/* <Route path="/movies" element={<Movies />} /> */}
+          <Route path="/movies/:userInput"  element={<Movies />} />
         </Routes>
       </div>
     </Router>
