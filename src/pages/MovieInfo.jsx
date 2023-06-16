@@ -1,15 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const MovieInfo = () => {
+  const apiKey = `11aed1bd`;
+  const url = `https://www.omdbapi.com/`;
+
   const { imdbID } = useParams();
   const [movieSelected, setMovieSelected] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  const apiKey = `11aed1bd`;
-  const url = `https://www.omdbapi.com/`;
 
   async function fetchSelectedMovie(imdbID) {
     setLoading(true);
@@ -37,10 +37,10 @@ const MovieInfo = () => {
       <div className="movie__container">
         <div className="row">
           <div className="movie__selected--top">
-            <Link to="/" className="movie__link">
+            <Link to={`/`} className="movie__link">
               <FontAwesomeIcon icon="arrow-left" />
             </Link>
-            <Link to="/" className="movie__link">
+            <Link to={`/`} className="movie__link">
               <h2 className="movie__selected--title--top">Movies</h2>
             </Link>
           </div>

@@ -1,18 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Movie from "../components/Movie";
 
-const Movies = (movies) => {
-  let navigate = useNavigate();
-  const [userInput, setUserInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [movieList, setMovieList] = useState([]);
-  const [movie, setMovie] = useState();
-
+const Movies = () => {
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
 
-  async function fetchMovies() {
+  const navigate = useNavigate();
+
+  const [userInput, setUserInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [movieList, setMovieList] = useState([]);
+
+  async function fetchMovies(userInput) {
     console.log("userInput", userInput);
     setLoading(true);
 
@@ -27,6 +28,7 @@ const Movies = (movies) => {
     } finally {
       setLoading(false);
     }
+    // navigate(`movies/${userInput}`);
   }
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const Movies = (movies) => {
 
   function searchHandler(event) {
     event.preventDefault();
-    fetchMovies();
+    fetchMovies(userInput);
   }
 
   function filterMovies(filter) {
@@ -94,25 +96,7 @@ const Movies = (movies) => {
         </div>
         <div id="movieResults" className="row">
           {movieList.map((movie) => (
-            <div
-              className="result__container"
-              key={movie.imdbID}
-              onClick={() => navigate(`/movie/${movie.imdbID}`)}
-            >
-              <figure className="movie__img__container">
-                <img
-                  src={movie.Poster}
-                  alt="Movie Image"
-                  className="movie__img"
-                />
-              </figure>
-              <div id="movie__description" className="movie__description">
-                <h2 className="movie__title">
-                  <i> {movie.Title} </i>
-                </h2>
-                <h2 className="movie__year">{movie.Year}</h2>
-              </div>
-            </div>
+            <Movie movie={movie} key={movie.imdbID} />
           ))}
         </div>
       </div>

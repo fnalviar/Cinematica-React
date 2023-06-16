@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-const Sort = ({ movieList: initialMovieList }) => {
-  const [movies, setMovies] = useState([initialMovieList]);
-  const [movieList, setMovieList] = useState([]);
+const Sort = ({ movieListProp }) => {
+  const [movieList, setMovieList] = useState([...movieListProp]);
 
   function filterMovies(filter) {
     const sortedMovies = [...movieList];
@@ -17,6 +16,7 @@ const Sort = ({ movieList: initialMovieList }) => {
       sortedMovies.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
     }
     setMovieList(sortedMovies);
+    updateMovieList(sortedMovies);
   }
 
   return (
