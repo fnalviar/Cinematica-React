@@ -1,6 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const MovieInfo = () => {
   const { imdbID } = useParams();
@@ -35,6 +36,14 @@ const MovieInfo = () => {
     <div className="movie__body">
       <div className="movie__container">
         <div className="row">
+          <div className="movie__selected--top">
+            <Link to="/" className="movie__link">
+              <FontAwesomeIcon icon="arrow-left" />
+            </Link>
+            <Link to="/" className="movie__link">
+              <h2 className="movie__selected--title--top">Movies</h2>
+            </Link>
+          </div>
           <div className="movie__selected">
             {movieSelected && (
               <>

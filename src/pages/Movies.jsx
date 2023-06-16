@@ -92,9 +92,13 @@ const Movies = (movies) => {
             <option value="NEWEST_TO_OLDEST">Year, Newest to Oldest</option>
           </select>
         </div>
-        {movieList.map((movie) => (
-          <div id="movieResults" className="row" key={movie.imdbID}>
-            <div className="result__container" onClick={() => navigate(`/movie/${movie.imdbID}`)}>
+        <div id="movieResults" className="row">
+          {movieList.map((movie) => (
+            <div
+              className="result__container"
+              key={movie.imdbID}
+              onClick={() => navigate(`/movie/${movie.imdbID}`)}
+            >
               <figure className="movie__img__container">
                 <img
                   src={movie.Poster}
@@ -109,8 +113,8 @@ const Movies = (movies) => {
                 <h2 className="movie__year">{movie.Year}</h2>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );
