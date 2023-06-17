@@ -30,6 +30,7 @@ const Movies = () => {
       } finally {
         setLoading(false);
       }
+      navigate(`/movies/${userInput}`);
     }
   }
 
@@ -69,7 +70,7 @@ const Movies = () => {
             onChange={(event) => setUserInput(event.target.value)}
             value={userInput}
           />
-          <button className="btn btn--search" onClick={searchHandler}>
+          <button className="btn btn--search" onClick={() => searchHandler()}>
             Search
           </button>
         </form>
