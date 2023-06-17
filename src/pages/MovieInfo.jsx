@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+import Recommend from "../ui/Recommend.jsx"
 
 const MovieInfo = () => {
   const apiKey = `11aed1bd`;
@@ -81,6 +82,7 @@ const MovieInfo = () => {
             )}
           </div>
         </div>
+        <Recommend />
       </div>
     </div>
   );
