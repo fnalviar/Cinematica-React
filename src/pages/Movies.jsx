@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Movie from "../components/Movie";
 
 const Movies = () => {
@@ -14,28 +14,28 @@ const Movies = () => {
   const [movieList, setMovieList] = useState([]);
 
   async function fetchMovies(userInput) {
-    console.log("userInput", userInput);
-    setLoading(true);
+    if (userInput !== "") {
+      console.log("userInput", userInput);
+      setLoading(true);
 
-    try {
-      const { data } = await axios.get(
-        `${url}?s=${userInput}&apikey=${apiKey}`
-      );
-      setMovieList(data.Search);
-      navigate(`/movies/${userInput}`);
-      console.log("movieList", movieList);
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
+      try {
+        const { data } = await axios.get(
+          `${url}?s=${userInput}&apikey=${apiKey}`
+        );
+        console.log("data", data);
+        setMovieList(data.Search);
+        console.log("movieList", movieList);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
+      }
     }
   }
 
   useEffect(() => {
-    if (userInput !== "") {
-      fetchMovies(userInput);
-    }
-  }, []);
+    fetchMovies(userInput);
+  }, [userInput]);
 
   function searchHandler(event) {
     event.preventDefault();
@@ -69,9 +69,7 @@ const Movies = () => {
             onChange={(event) => setUserInput(event.target.value)}
             value={userInput}
           />
-          <button className="btn btn--search" 
-          onClick={searchHandler}
-          >
+          <button className="btn btn--search" onClick={searchHandler}>
             Search
           </button>
         </form>
@@ -97,9 +95,10 @@ const Movies = () => {
           </select>
         </div>
         <div id="movieResults" className="row">
-          {movieList.map((movie) => (
-            <Movie movie={movie} key={movie.imdbID} />
-          ))}
+          {movieList &&
+            movieList.map((movie) => (
+              <Movie movie={movie} key={movie.imdbID} />
+            ))}
         </div>
       </div>
     </>
