@@ -14,7 +14,7 @@ const Recommend = ({ movieSelected, movieList }) => {
       <div className="recommend__movies__container">
         {movieListArray &&
           movieListArray
-            .filter((movie) => movie.imdbID !== movieSelected.imdbID && movie.Year >= movieSelected.Year)
+            .filter((movie) => movie.imdbID !== movieSelected.imdbID && movie.Type === movieSelected.Type)
             .slice(0, 8)
             .map((movie) => <Movie key={movie.imdbID} movie={movie} />)}
       </div>
