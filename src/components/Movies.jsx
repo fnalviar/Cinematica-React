@@ -25,6 +25,7 @@ const Movies = () => {
         const { data } = await axios.get(
           `${url}?s=${userInput}&apikey=${apiKey}`
         );
+        console.log("userInput at Movies.jsx, ", userInput)
         setMovieList(data.Search);
       } catch (error) {
         console.log(error.message);
