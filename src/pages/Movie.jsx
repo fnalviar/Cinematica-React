@@ -1,14 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Movie = ({ movie, movieList }) => {
+const Movie = ({ movie, userInput, movieList }) => {
   let navigate = useNavigate();
 
   return (
     <div
       className="result__container"
       key={movie.imdbID}
-      onClick={() => navigate(`/movie/${movie.imdbID}`, {state: {movieList}})}
+      onClick={() =>
+        navigate(`/movie/${userInput}/${movie.imdbID}`, {
+          state: { movieList },
+        })
+      }
     >
       <figure className="movie__img__container">
         <img src={movie.Poster} alt="Movie Image" className="movie__img" />

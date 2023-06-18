@@ -84,7 +84,7 @@ const Movies = () => {
         <div id="movieResults" className="row">
           {movieList &&
             movieList.map((movie) => (
-              <Movie key={movie.imdbID} movie={movie} movieList={movieList} />
+              <Movie key={movie.imdbID} movie={movie} userInput={userInput} movieList={movieList} />
             ))}
         </div>
       </div>

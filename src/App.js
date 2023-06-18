@@ -13,7 +13,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movie/:imdbID" exact element={<MovieInfo />} />
+          <Route path="/movie/:userInput/:imdbID" exact element={<MovieInfo />} />
           <Route path="/movies/:userInput" exact element={<Movies />} />
         </Routes>
       </div>
