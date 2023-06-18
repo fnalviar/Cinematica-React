@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Recommend from "../ui/Recommend.jsx";
 
 const MovieInfo = () => {
@@ -9,6 +9,8 @@ const MovieInfo = () => {
   const url = `https://www.omdbapi.com/`;
 
   const { imdbID } = useParams();
+  const location = useLocation();
+  const movieList = location.state;
   const [movieSelected, setMovieSelected] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -17,9 +19,7 @@ const MovieInfo = () => {
 
     try {
       const { data } = await axios.get(`${url}?i=${imdbID}&apikey=${apiKey}`);
-      console.log("data", data);
       setMovieSelected(data);
-      console.log("movieSelected", movieSelected);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -31,7 +31,7 @@ const MovieInfo = () => {
     if (imdbID !== "") {
       fetchSelectedMovie(imdbID);
     }
-  }, [imdbID]);
+  }, []);
 
   return (
     <div className="movie__body">
@@ -82,7 +82,7 @@ const MovieInfo = () => {
             )}
           </div>
         </div>
-        <Recommend />
+        <Recommend movieSelected={movieSelected} movieList={movieList} />
       </div>
     </div>
   );

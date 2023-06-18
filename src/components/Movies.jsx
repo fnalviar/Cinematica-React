@@ -8,26 +8,24 @@ const Movies = () => {
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
 
+  const fullApi = `https://www.omdbapi.com/?t=Ant&apikey=11aed1bd`;
+
   let navigate = useNavigate();
 
   const { userInput } = useParams();
-  console.log("userInput at Movies.jsx, ", userInput);
 
   const [loading, setLoading] = useState(false);
   const [movieList, setMovieList] = useState([]);
 
   async function fetchMovies(userInput) {
     if (userInput !== "") {
-      console.log("userInput at Movies.jsx", userInput);
       setLoading(true);
 
       try {
         const { data } = await axios.get(
           `${url}?s=${userInput}&apikey=${apiKey}`
         );
-        console.log("data", data);
         setMovieList(data.Search);
-        console.log("movieList", movieList);
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -37,7 +35,7 @@ const Movies = () => {
   }
 
   useEffect(() => {
-    if (userInput !== "") {
+    if (userInput !== null) {
       fetchMovies(userInput);
     }
   }, []);
@@ -85,7 +83,7 @@ const Movies = () => {
         <div id="movieResults" className="row">
           {movieList &&
             movieList.map((movie) => (
-              <Movie key={movie.imdbID} movie={movie} />
+              <Movie key={movie.imdbID} movie={movie} movieList={movieList} />
             ))}
         </div>
       </div>

@@ -4,6 +4,7 @@ import Movies from "./components/Movies";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import MovieInfo from "./pages/MovieInfo";
+import Movie from "./pages/Movie";
 
 function App() {
   return (
