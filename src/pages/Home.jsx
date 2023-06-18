@@ -1,8 +1,7 @@
 import React from "react";
-import Landing from "../components/Landing";
-import Movies from "./Movies";
 import Footer from "../components/Footer";
-import MovieInfo from "./MovieInfo";
+import Landing from "../components/Landing";
+import Movies from "../components/Movies";
 const Home = () => {
   return (
     <>

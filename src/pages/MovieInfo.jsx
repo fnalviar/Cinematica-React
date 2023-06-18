@@ -1,15 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
-import Recommend from "../ui/Recommend.jsx"
+import { Link, useParams } from "react-router-dom";
+import Recommend from "../ui/Recommend.jsx";
 
 const MovieInfo = () => {
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
 
   const { imdbID } = useParams();
-  const [movieSelected, setMovieSelected] = useState(null);
+  const [movieSelected, setMovieSelected] = useState([]);
   const [loading, setLoading] = useState(false);
 
   async function fetchSelectedMovie(imdbID) {
