@@ -1,6 +1,6 @@
 import React from "react";
 import SearchMovie from "../ui/SearchMovie";
-import movieImage from "../assets/necessary__movies.png";
+import landingMovieImage from "../assets/landing_movies.png";
 
 const Landing = () => {
   return (
@@ -17,7 +17,7 @@ const Landing = () => {
         </div>
         <SearchMovie />
         <figure className="landing__image__container">
-          <img src={movieImage} alt="" />
+          <img src={landingMovieImage} alt="Landing Movie Image" />
         </figure>
       </div>
     </div>
