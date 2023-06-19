@@ -1,4 +1,6 @@
 import React from "react";
+import SearchMovie from "../ui/SearchMovie";
+import movieImage from "../assets/necessary__movies.png";
 
 const Landing = () => {
   return (
@@ -13,6 +15,10 @@ const Landing = () => {
             <span className="purple"> CINEMATICA!</span>
           </h2>
         </div>
+        <SearchMovie />
+        <figure className="landing__image__container">
+          <img src={movieImage} alt="" />
+        </figure>
       </div>
     </div>
   );
