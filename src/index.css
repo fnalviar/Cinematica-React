@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700;800&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "Noto Serif", serif;
 }
 
 html {
@@ -42,7 +42,7 @@ button {
     GENERAL
 */
 
-.landing,
+#nav,
 #main,
 #search__result,
 .movie__body {
@@ -54,8 +54,8 @@ button {
   color: white;
 }
 
-.purple {
-  color: #6316ff;
+.blue {
+  color: #55aedf;
 }
 
 .btn {
@@ -92,7 +92,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 75px;
+  height: 10vh;
   border: none;
 }
 
@@ -112,7 +112,7 @@ nav {
 }
 
 .company-name {
-  color: #6316ff;
+  color: #55aedf;
   font-style: italic;
 }
 
@@ -131,7 +131,7 @@ nav {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #6316ff;
+  background-color: #55aedf;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -151,7 +151,7 @@ nav {
 
 .nav__link--primary {
   font-size: 16px;
-  background-color: #6316ff;
+  background-color: #55aedf;
   color: #fff;
   margin: 0 auto;
   padding: 12px 24px;
@@ -163,7 +163,7 @@ nav {
   background-color: transparent;
   font-size: 32px;
   border: none;
-  color: #6316ff;
+  color: #55aedf;
   display: none;
 }
 
@@ -211,7 +211,7 @@ nav {
 }
 
 .menu__link {
-  color: #6316ff;
+  color: #55aedf;
   font-size: 32px;
 }
 
@@ -220,7 +220,7 @@ nav {
   top: 10px;
   right: 20px;
   padding: 8px;
-  color: #6316ff;
+  color: #55aedf;
 }
 
 /* 
@@ -228,9 +228,11 @@ nav {
 */
 
 #main {
-  padding: 16px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  max-height: calc(100vh - 10vh);
+  padding: 16px;
 }
 
 .header__container {
@@ -248,12 +250,12 @@ nav {
 
 .header__description {
   text-align: center;
-  padding: 32px 16px;
+  padding: 24px 16px;
 }
 
 .header__title {
   margin-bottom: 32px;
-  color: #6316ff;
+  color: #55aedf;
   font-size: 38px;
   font-weight: 600;
   animation: fade-up 650ms 200ms backwards;
@@ -262,6 +264,18 @@ nav {
 .header__subtitle {
   font-weight: 600;
   animation: fade-up 650ms 400ms backwards;
+}
+
+.landing__image__container {
+  display: flex;
+  justify-content: center;
+  height: 40vh;
+  width: 40vw;
+}
+
+.landing__image {
+  height: 100%;
+  width: 100%;
 }
 
 @keyframes fade-up {
@@ -278,7 +292,7 @@ nav {
 .search__bar__container {
   display: flex;
   justify-content: center;
-  padding: 32px 16px;
+  padding: 24px 16px;
   margin: 0 auto;
 }
 
@@ -305,12 +319,12 @@ nav {
   margin-right: 8px;
   padding: 12px 26px;
   font-size: 16px;
-  background-color: #6316ff;
+  background-color: #55aedf;
   color: #fff;
 }
 
 .btn:hover {
-  background-color: #733ddd;
+  background-color: #55aedf;
 }
 
 .btn:active {
@@ -458,8 +472,8 @@ nav {
 }
 
 .form__submit {
-  background-color: #6316ff;
-  border: 2px solid #6316ff;
+  background-color: #55aedf;
+  border: 2px solid #55aedf;
   border-radius: 9999px;
   color: #fff;
   font-weight: 500;
@@ -471,12 +485,12 @@ nav {
 }
 
 .form__submit:hover {
-  background-color: #733ddd;
+  background-color: #55aedf;
 }
 
 .form__submit:active {
-  border-color: #6316ff;
-  color: #6316ff;
+  border-color: #55aedf;
+  color: #55aedf;
 }
 
 .modal__overlay {

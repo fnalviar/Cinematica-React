@@ -12,14 +12,18 @@ const Landing = () => {
           </h1>
           <h2 className="header__subtitle">
             FIND WHAT TO BINCH WATCH NEXT WITH
-            <span className="purple"> CINEMATICA!</span>
+            <span className="blue"> CINEMATICA!</span>
           </h2>
         </div>
         <SearchMovie />
-        <figure className="landing__image__container">
-          <img src={landingMovieImage} alt="Landing Movie Image" />
-        </figure>
       </div>
+      <figure className="landing__image__container">
+        <img
+          src={landingMovieImage}
+          alt="Landing Movie Image"
+          className="landing__image"
+        />
+      </figure>
     </div>
   );
 };

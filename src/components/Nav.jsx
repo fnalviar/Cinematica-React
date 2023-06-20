@@ -15,7 +15,7 @@ const Nav = () => {
   }
 
   return (
-    <div className="landing">
+    <div id="nav">
       <nav>
         <figure className="logo__container">
           <Link to="/">
