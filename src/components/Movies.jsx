@@ -3,30 +3,37 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Movie from "../pages/Movie";
 import SearchMovie from "../ui/SearchMovie";
+import PageResult from "../ui/PageResult";
 
 const Movies = () => {
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
 
+  const { userInput } = useParams();
+
   // const fullApi = `https://www.omdbapi.com/?s=Ant&apikey=11aed1bd`;
 
   let navigate = useNavigate();
 
-  const { userInput } = useParams();
-
   const [loading, setLoading] = useState(false);
   const [movieList, setMovieList] = useState([]);
 
-  async function fetchMovies(userInput) {
+  const itemsPerPage = 10; // OMDBapi only display 10 movies per page
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
+
+  async function fetchMovies(userInput, page) {
     if (userInput !== "") {
       setLoading(true);
 
       try {
         const { data } = await axios.get(
-          `${url}?s=${userInput}&apikey=${apiKey}`
+          `${url}?s=${userInput}&page=${page}&apikey=${apiKey}`
         );
-        console.log("userInput at Movies.jsx, ", userInput);
         setMovieList(data.Search);
+        setTotalResults(parseInt(data.totalResults));
+
+        console.log("userInput at Movies.jsx, ", userInput);
         console.log("movieList at Movies.jsx, ", movieList);
       } catch (error) {
         console.log(error.message);
@@ -38,7 +45,9 @@ const Movies = () => {
 
   useEffect(() => {
     if (userInput !== null) {
-      fetchMovies(userInput);
+      setCurrentPage(1);
+      setMovieList([]);
+      fetchMovies(userInput, 1);
     }
   }, [userInput]);
 
@@ -68,6 +77,8 @@ const Movies = () => {
     return titleCase;
   }
 
+  const totalPages = Math.ceil(totalResults / itemsPerPage);
+
   return (
     <>
       <SearchMovie />
@@ -76,6 +87,13 @@ const Movies = () => {
         <h2 id="results__number" className="results__title">
           Search Results for "{titleCaseUserInput(userInput)}"
         </h2>
+
+        <PageResult
+          fetchMovies={fetchMovies}
+          totalPages={totalPages}
+          userInput={userInput}
+        />
+
         <select
           className="sort__elements"
           id="filter"
@@ -94,7 +112,7 @@ const Movies = () => {
 
       <div id="movieResults" className="row">
         {loading
-          ? new Array(10).fill(0).map((_, index) => (
+          ? new Array({ length: itemsPerPage }).fill(0).map((_, index) => (
               <div className="result__container--skeleton" key={index}>
                 <figure className="skeleton movie__img__container--skeleton"></figure>
                 <div>
@@ -113,6 +131,11 @@ const Movies = () => {
               />
             ))}
       </div>
+      <PageResult
+        fetchMovies={fetchMovies}
+        totalPages={totalPages}
+        userInput={userInput}
+      />
     </>
   );
 };

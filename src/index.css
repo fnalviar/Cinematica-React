@@ -62,6 +62,7 @@ button {
   border-radius: 9999px;
   border: none;
   color: white;
+  background-color: #55aedf;
   font-weight: bold;
 }
 
@@ -405,6 +406,17 @@ nav {
 .sort__elements {
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.right__button--page,
+.left__button--page {
+  padding: 8px;
+  font-size: 24px;
+}
+
+.page--number--result {
+  font-size: 24px;
+  margin: 16px;
 }
 
 /* 
