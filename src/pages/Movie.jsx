@@ -17,7 +17,17 @@ const Movie = ({ movie, userInput, movieList }) => {
     >
       <figure className="movie__img__container">
         <img src={movie.Poster} alt="Movie Image" className="movie__img" />
+        {movie.Type === "movie" ? (
+          <figure className="movie__genre__container movie--genre">
+            <h3 className="movie--type">{movie.Type}</h3>
+          </figure>
+        ) : (
+          <figure className="movie__genre__container series--genre">
+            <h3 className="movie--type">{movie.Type}</h3>
+          </figure>
+        )}
       </figure>
+
       <h2 className="movie__title">
         <i> {movie.Title} </i>
       </h2>

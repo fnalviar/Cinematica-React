@@ -363,8 +363,25 @@ nav {
 }
 
 .movie__img__container {
+  position: relative;
   width: 100%;
   height: 450px;
+}
+
+.movie__genre__container {
+  position: absolute;
+  bottom: 10px;
+  border-radius: 4rem;
+  padding: 4px 8px;
+  margin-left: 12px;
+}
+
+.movie--genre {
+  background-color: #55AEDF;
+}
+
+.series--genre {
+  background-color: #F8D440;
 }
 
 .movie__img {
@@ -372,6 +389,7 @@ nav {
   height: 100%;
   transition: all 300ms ease;
 }
+
 
 .result__container:hover .movie__img {
   transform: scale(1.03);
@@ -453,6 +471,10 @@ nav {
   display: flex;
   justify-content: center;
   padding: 32px;
+}
+
+.movie--type {
+  text-transform: uppercase;
 }
 
 

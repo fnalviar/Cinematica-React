@@ -89,12 +89,6 @@ const Movies = () => {
           <span className="blue user--input--results__title"> {titleCaseUserInput(userInput)} </span>
         </h2>
 
-        {/* <PageResult
-          fetchMovies={fetchMovies}
-          totalPages={totalPages}
-          userInput={userInput}
-        /> */}
-
         <select
           className="sort__elements"
           id="filter"

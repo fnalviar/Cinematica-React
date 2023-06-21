@@ -8,8 +8,6 @@ const SearchMovie = () => {
 
   async function searchHandler(event) {
     event.preventDefault();
-    console.log("userInput at SearchMovie.jsx, ", userInput);
-
     navigate(`/movies/${userInput}`);
   }
 
