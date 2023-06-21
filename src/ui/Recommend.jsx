@@ -4,7 +4,6 @@ import Movie from "../pages/Movie";
 const Recommend = ({ movieSelected, movieList }) => {
   const movieListArrayConvert = Object.values(movieList);
   const movieListArray = movieListArrayConvert[0];
-  console.log("movieListArray at Recommend.jsx,", movieListArray);
 
   return (
     <div className="recommend__container">

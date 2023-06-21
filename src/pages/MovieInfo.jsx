@@ -20,6 +20,7 @@ const MovieInfo = () => {
     try {
       const { data } = await axios.get(`${url}?i=${imdbID}&apikey=${apiKey}`);
       setMovieSelected(data);
+      console.log("data at MovieInfo.jsx, ", data);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -45,6 +46,7 @@ const MovieInfo = () => {
               <h2 className="movie__selected--title--top">Movies</h2>
             </Link>
           </div>
+
           <div className="movie__selected">
             {movieSelected && (
               <>
@@ -59,12 +61,57 @@ const MovieInfo = () => {
                   <h2 className="movie__selected--title">
                     {movieSelected.Title}
                   </h2>
-                  <h3 className="movie__selected--year">
-                    {movieSelected.Year}
-                  </h3>
-                  <h3 className="movie__selected--runtime">
-                    {movieSelected.Runtime}
-                  </h3>
+
+                  <div className="movie__selected--top__container">
+                    <div className="movie__selected--lists__container">
+                      <ul className="movie__selected--lists">
+                        <li className="movie__selected--list movie__selected--year">
+                          {movieSelected.Year}
+                        </li>
+                        <li className="movie__selected--list movie__selected--rated">
+                          {movieSelected.Rated}
+                        </li>
+                        <li className="movie__selected--list movie__selected--runtime">
+                          {movieSelected.Runtime}
+                        </li>
+                      </ul>
+                    </div>
+
+                    
+                    {movieSelected.Ratings &&
+                      movieSelected.Ratings.length > 0 && (
+                        <div className="movie__selected--ratings__container">
+                          <h4 className="movie__selected--ratings--title">
+                            Ratings
+                          </h4>
+                          {parseFloat(movieSelected.Ratings[0].Value) >= 5 ? (
+                            <FontAwesomeIcon
+                              icon={"star"}
+                              className="rating--star"
+                            />
+                          ) : (
+                            <FontAwesomeIcon
+                              icon={"star-half-alt"}
+                              className="rating--star"
+                            />
+                          )}
+                          {movieSelected.Ratings[0].Value}
+                        </div>
+                      )}
+                  </div>
+
+                  {movieSelected.Genre && (
+                    <div className="movie__selected--genre__container">
+                      <ul className="genre__lists">
+                        {movieSelected.Genre.split(", ").map((word, index) => (
+                          <li key={index} className="genre__list">
+                            {word}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   <div className="movie__selected--plot">
                     {movieSelected.Plot}
                   </div>

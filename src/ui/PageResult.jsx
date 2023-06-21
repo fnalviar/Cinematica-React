@@ -20,8 +20,6 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
     fetchMovies(userInput, currentPage);
   }
 
-  console.log("currentPage", currentPage);
-
   return (
     <div className="page__button__container">
       <button className="btn left__button--page" onClick={previousPageHandler}>

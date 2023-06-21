@@ -33,8 +33,8 @@ const Movies = () => {
         setMovieList(data.Search);
         setTotalResults(parseInt(data.totalResults));
 
-        console.log("userInput at Movies.jsx, ", userInput);
-        console.log("movieList at Movies.jsx, ", movieList);
+        // console.log("userInput at Movies.jsx, ", userInput);
+        // console.log("movieList at Movies.jsx, ", movieList);
       } catch (error) {
         console.log(error.message);
       } finally {
