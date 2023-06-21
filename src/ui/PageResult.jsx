@@ -16,14 +16,31 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
     setCurrentPage(previousPage);
   }
 
+  function userInputPageHandler() {
+    fetchMovies(userInput, currentPage);
+  }
+
+  console.log("currentPage", currentPage);
+
   return (
     <div className="page__button__container">
       <button className="btn left__button--page" onClick={previousPageHandler}>
         <FontAwesomeIcon icon={"arrow-left"} />
       </button>
-      <span className="page--number--result">
-        {currentPage}/{totalPages}
-      </span>
+      <div className="page--number--results__container">
+        <h2>
+          <input
+            type="number"
+            className="page--number"
+            value={currentPage}
+            onChange={(event) => setCurrentPage(event.target.value)}
+            onKeyDown={(event) => {
+              event.key == "Enter" && userInputPageHandler();
+            }}
+          />
+          /{totalPages}
+        </h2>
+      </div>
       <button className="btn right__button--page" onClick={nextPageHandler}>
         <FontAwesomeIcon icon={"arrow-right"} />
       </button>

@@ -7,7 +7,7 @@ const Movie = ({ movie, userInput, movieList }) => {
 
   return (
     <div
-      className="result__container"
+      className="movie__result__container"
       key={movie.imdbID}
       onClick={() =>
         navigate(`/movie/${userInput}/${movie.imdbID}`, {

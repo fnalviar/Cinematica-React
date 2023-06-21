@@ -83,16 +83,17 @@ const Movies = () => {
     <>
       <SearchMovie />
 
-      <div className="sort__container">
+      <div className="movie--results--header__container">
         <h2 id="results__number" className="results__title">
-          Search Results for "{titleCaseUserInput(userInput)}"
+          Search Results for{" "}
+          <span className="blue user--input--results__title"> {titleCaseUserInput(userInput)} </span>
         </h2>
 
-        <PageResult
+        {/* <PageResult
           fetchMovies={fetchMovies}
           totalPages={totalPages}
           userInput={userInput}
-        />
+        /> */}
 
         <select
           className="sort__elements"
@@ -131,11 +132,13 @@ const Movies = () => {
               />
             ))}
       </div>
-      <PageResult
-        fetchMovies={fetchMovies}
-        totalPages={totalPages}
-        userInput={userInput}
-      />
+      <div className="bottom__page--result">
+        <PageResult
+          fetchMovies={fetchMovies}
+          totalPages={totalPages}
+          userInput={userInput}
+        />
+      </div>
     </>
   );
 };

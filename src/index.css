@@ -45,7 +45,10 @@ button {
 #nav,
 #main,
 #search__result,
-.movie__body {
+#movieResults, 
+.movie__body,
+.search__bar__container,
+.movie--results--header__container {
   padding: 0 16px;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -56,6 +59,10 @@ button {
 
 .blue {
   color: #55aedf;
+}
+
+.yellow {
+  color: #F8D440;
 }
 
 .btn {
@@ -310,9 +317,9 @@ nav {
   width: 100%;
   height: 60px;
   padding: 18px 12px;
-  border-radius: 1rem;
+  border-radius: 5rem;
   font-size: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .btn--search {
@@ -344,7 +351,7 @@ nav {
   padding: 42px 0;
 }
 
-.result__container {
+.movie__result__container {
   padding-bottom: 18px;
   margin: 18px;
   width: 30%;
@@ -370,7 +377,7 @@ nav {
   transform: scale(1.03);
 }
 
-.sort__container {
+.movie--results--header__container {
   display: flex;
   justify-content: space-between;
   margin: 24px 0;
@@ -378,6 +385,11 @@ nav {
 
 .results__title {
   font-size: 32px;
+  font-weight: 500;
+}
+
+.user--input--results__title {
+  font-weight: 700;
 }
 
 .movie__title {
@@ -408,9 +420,27 @@ nav {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.page__button__container {
+  display: flex;
+}
+
+.page--number--results__container {
+  display: flex;
+  align-items: center;
+  margin: 0 18px;
+}
+
+.page--number {
+  width: 3vw;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  height: auto;
+}
+
 .right__button--page,
 .left__button--page {
-  padding: 8px;
+  padding: 16px;
   font-size: 24px;
 }
 
@@ -418,6 +448,13 @@ nav {
   font-size: 24px;
   margin: 16px;
 }
+
+.bottom__page--result {
+  display: flex;
+  justify-content: center;
+  padding: 32px;
+}
+
 
 /* 
   MODAL SECTION
