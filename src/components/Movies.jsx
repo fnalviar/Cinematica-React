@@ -107,7 +107,7 @@ const Movies = () => {
 
       <div id="movieResults" className="row">
         {loading
-          ? new Array({ length: itemsPerPage }).fill(0).map((_, index) => (
+          ? Array.from({ length: itemsPerPage }).map((_, index) => (
               <div className="result__container--skeleton" key={index}>
                 <figure className="skeleton movie__img__container--skeleton"></figure>
                 <div>

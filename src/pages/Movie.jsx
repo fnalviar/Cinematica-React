@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import NoPoster from "../exception/NoPoster";
 
 const Movie = ({ movie, userInput, movieList }) => {
   let navigate = useNavigate();
@@ -16,13 +17,22 @@ const Movie = ({ movie, userInput, movieList }) => {
       }
     >
       <figure className="movie__img__container">
-        <img src={movie.Poster} alt="Movie Image" className="movie__img" />
+        {movie.Poster != "N/A" ? (
+          <img src={movie.Poster} alt="Movie Image" className="movie__img" />
+        ) : (
+          <NoPoster />
+        )}
+
         {movie.Type === "movie" ? (
           <figure className="movie__genre__container movie--genre">
             <h3 className="movie--type">{movie.Type}</h3>
           </figure>
-        ) : (
+        ) : movie.Type === "series" ? (
           <figure className="movie__genre__container series--genre">
+            <h3 className="movie--type">{movie.Type}</h3>
+          </figure>
+        ) : (
+          <figure className="movie__genre__container other--genre">
             <h3 className="movie--type">{movie.Type}</h3>
           </figure>
         )}
