@@ -351,7 +351,8 @@ nav {
   padding: 42px 0;
 }
 
-.movie__result__container {
+.movie__result__container,
+.result__container--skeleton {
   padding-bottom: 18px;
   margin: 18px;
   width: 30%;
@@ -363,7 +364,8 @@ nav {
 }
 
 .movie__img__container,
-.no--image__container {
+.no--image__container,
+.movie__img__container--skeleton {
   position: relative;
   width: 100%;
   height: 450px;
@@ -646,14 +648,9 @@ nav {
   padding: 18px;
 }
 
-.movie__img__container--skeleton {
-  height: 350px;
-  width: 100%;
-}
-
 .movie__title--skeleton,
 .movie__year--skeleton {
-  height: 60px;
+  margin: 12px 0;
   width: 100%;
 }
 

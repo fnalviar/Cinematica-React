@@ -1,14 +1,23 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SearchMovie = () => {
   const [userInput, setUserInput] = useState("");
+  const [loading, setLoading] = useState(false);
 
   let navigate = useNavigate();
 
   async function searchHandler(event) {
     event.preventDefault();
-    navigate(`/movies/${userInput}`);
+    setLoading(true);
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      navigate(`/movies/${userInput}`);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -27,9 +36,15 @@ const SearchMovie = () => {
             value={userInput}
           />
 
-          <button className="btn btn--search" onClick={searchHandler}>
-            Search
-          </button>
+          {loading ? (
+            <button className="btn btn--search">
+              <FontAwesomeIcon icon={"spinner"} />
+            </button>
+          ) : (
+            <button className="btn btn--search" onClick={searchHandler}>
+              Search
+            </button>
+          )}
         </form>
       </div>
     </>

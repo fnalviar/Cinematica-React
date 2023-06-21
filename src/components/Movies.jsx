@@ -86,7 +86,10 @@ const Movies = () => {
       <div className="movie--results--header__container">
         <h2 id="results__number" className="results__title">
           Search Results for{" "}
-          <span className="blue user--input--results__title"> {titleCaseUserInput(userInput)} </span>
+          <span className="blue user--input--results__title">
+            {" "}
+            {titleCaseUserInput(userInput)}{" "}
+          </span>
         </h2>
 
         <select
