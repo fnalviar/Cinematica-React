@@ -5,26 +5,31 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   function nextPageHandler() {
-    const nextPage = currentPage + 1;
-    fetchMovies(userInput, nextPage);
-    setCurrentPage(nextPage);
+    setCurrentPage((prevPage) => prevPage + 1);
+    fetchMovies(userInput, currentPage);
   }
 
   function previousPageHandler() {
-    const previousPage = currentPage - 1;
-    fetchMovies(userInput, previousPage);
-    setCurrentPage(previousPage);
+    setCurrentPage((prevPage) => prevPage - 1);
+    fetchMovies(userInput, currentPage);
   }
 
-  function userInputPageHandler() {
+  function userInputPageHandler(event) {
+    const userInputPage = parseInt(event.target.value);
+    setCurrentPage(userInputPage);
     fetchMovies(userInput, currentPage);
   }
 
   return (
     <div className="page__button__container">
-      <button className="btn left__button--page" onClick={previousPageHandler}>
-        <FontAwesomeIcon icon={"arrow-left"} />
-      </button>
+      {currentPage != 1 && (
+        <button
+          className="btn left__button--page"
+          onClick={previousPageHandler}
+        >
+          <FontAwesomeIcon icon={"arrow-left"} />
+        </button>
+      )}
       <div className="page--number--results__container">
         <h2>
           <input
@@ -33,15 +38,20 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
             value={currentPage}
             onChange={(event) => setCurrentPage(event.target.value)}
             onKeyDown={(event) => {
-              event.key == "Enter" && userInputPageHandler();
+              if (event.key == "Enter" && event.target.value !== "0") {
+                userInputPageHandler(event);
+              }
             }}
           />
           /{totalPages}
         </h2>
       </div>
-      <button className="btn right__button--page" onClick={nextPageHandler}>
-        <FontAwesomeIcon icon={"arrow-right"} />
-      </button>
+
+      {currentPage != totalPages && (
+        <button className="btn right__button--page" onClick={nextPageHandler}>
+          <FontAwesomeIcon icon={"arrow-right"} />
+        </button>
+      )}
     </div>
   );
 };
