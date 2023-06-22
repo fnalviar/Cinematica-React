@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import emailjs from "emailjs-com";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Modal = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
+const Modal = ({ toggleModal }) => {
+  const [loadingVisible, setLoadingVisible] = useState(false);
+  const [successVisible, setSuccessVisible] = useState(false);
 
-  function toggleModal() {
-    isModalOpen && document.body.classNameList.remove("modal--open");
-    setModalOpen(true);
-    document.body.classNameList += " modal--open";
-  }
-
-  const contact = (event) => {
+  function contact(event) {
     event.preventDefault();
     setLoadingVisible(true);
 
@@ -21,16 +17,20 @@ const Modal = () => {
         setSuccessVisible(true);
       })
       .catch(() => {
-        setLoadingVisible(false);
-        alert(
-          "The contact form service is temporarily unavailable. Please contact us directly at cinematica@email.ca"
-        );
+        setTimeout(() => {
+          setLoadingVisible(false);
+          alert(
+            "The contact form service is temporarily unavailable. Please contact us directly at cinematica@email.ca"
+          );
+        }, 2000);
       });
-  };
+  }
 
   useEffect(() => {
-    setLoadingVisible(false);
-    setSuccessVisible(false);
+    setTimeout(() => {
+      setLoadingVisible(false);
+      setSuccessVisible(false);
+    }, 2000);
   }, []);
 
   return (
@@ -63,8 +63,9 @@ const Modal = () => {
               required
             ></textarea>
           </div>
+
           <button id="contact__submit" className="form__submit">
-            Submit
+            {loadingVisible ? <FontAwesomeIcon icon={"spinner"} /> : "Submit"}
           </button>
         </form>
         <div className="modal__overlay modal__overlay--loading">

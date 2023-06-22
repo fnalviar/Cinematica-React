@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/Cinematica_logo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../ui/Modal";
+import MenuBackDrop from "../ui/MenuBackDrop";
 
 const Nav = () => {
-  function openMenu() {
-    document.body.classList += " menu__open";
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  function toggleModal() {
+    if (isModalOpen) {
+      document.body.classList.remove("modal--open");
+    }
+    setModalOpen(true);
+    document.body.classList.add("modal--open");
   }
 
-  function closeMenu() {
-    document.body.classList.remove("menu__open");
+  function openMenu() {
+    document.body.classList += " menu__open";
   }
 
   return (
@@ -36,42 +43,24 @@ const Nav = () => {
             </Link>
           </li>
           <li className="nav__link">
-            <Link to="/" className="btn nav__link--anchor nav__link--primary">
+            <Link
+              to="/"
+              className="btn nav__link--anchor nav__link--primary"
+              onClick={toggleModal}
+            >
               Contact Us
             </Link>
           </li>
           <button className="" onClick={openMenu}>
+            
             <FontAwesomeIcon icon="bars" />
           </button>
         </ul>
 
-        <div className="menu__backdrop__container">
-          <div className="menu__backdrop">
-            <button className="btn__menu btn__menu--close" onClick={closeMenu}>
-              <FontAwesomeIcon icon="times" aria-hidden="true" />
-            </button>
-            <ul className="menu__links">
-              <li className="menu__list">
-                <Link className="menu__link" onClick={closeMenu}>
-                  Home
-                </Link>
-              </li>
-              <li className="menu__list">
-                <Link className="menu__link" onClick={closeMenu}>
-                  Search
-                </Link>
-              </li>
-              <li className="menu__list">
-                <Link className="menu__link" onClick={closeMenu}>
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <MenuBackDrop toggleModal={toggleModal} />
       </nav>
 
-      <Modal />
+      <Modal toggleModal={toggleModal} />
     </div>
   );
 };
