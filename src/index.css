@@ -65,6 +65,10 @@ button {
   color: #f8d440;
 }
 
+.red {
+  color: #e43f32;
+}
+
 .btn {
   border-radius: 9999px;
   border: none;
@@ -627,25 +631,58 @@ nav {
 */
 .movie__selected {
   display: flex;
+  padding: 32px;
 }
 
 .movie__selected--description {
   display: flex;
   flex-direction: column;
   padding: 0 32px;
+  width: 60%;
+  height: 100%;
 }
 
 .movie__selected--top__container {
   display: flex;
   justify-content: space-between;
-  margin: 12px 0;
+  margin: 8px 0;
 }
 
 .movie__selected--genre__container {
   margin-bottom: 12px;
 }
 
-.movie__selected--lists {
+.movie__selected--top {
+  display: flex;
+  align-items: center;
+  padding: 12px 32px;
+}
+
+.movie__selected--figure {
+  width: 40%;
+  height: 100%;
+}
+
+.arrow {
+  font-size: 24px;
+}
+
+.movie__link {
+  padding-right: 12px;
+  font-size: 16px;
+}
+
+.movie__selected--img {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.movie__selected--title {
+  font-size: 32px;
+}
+
+.movie__selected--info--lists {
   display: flex;
   padding: 8px 0;
 }
@@ -659,12 +696,19 @@ nav {
   list-style-type: none;
 }
 
-.rating--star {
-  color: #f8d440;
+.movie__selected--ratings--title {
+  text-align: center;
 }
 
-.genre__lists {
+.rating--star {
+  color: #f8d440;
+  padding-right: 8px;
+}
+
+.movie__lists {
   display: flex;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .genre__list {
@@ -675,9 +719,49 @@ nav {
   padding: 4px 12px;
 }
 
+.movie__selected--row {
+  padding: 18px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.movie__info__list {
+  list-style-type: disc;
+  margin-left: 32px;
+  font-weight: 600;
+}
+
+.movie__selected--actor {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+/* 
+  RECOMMENDED MOVIES SECTION
+*/
+
+.recommend__container {
+  margin-top: 72px;
+}
+
+.recommend__title__container {
+  padding: 0 18px;
+  text-transform: capitalize;
+}
+
+.recommend__movies__container {
+display: flex;
+flex-wrap: wrap;
+}
+
+
+
 /* 
   SKELETON LOADING 
 */
+.skeleton {
+  background-color: lightgray !important;
+  padding: 18px;
+}
 
 .result__container--skeleton {
   width: 25%;
@@ -689,15 +773,19 @@ nav {
   flex-direction: column;
 }
 
-.skeleton {
-  background-color: lightgray !important;
-  padding: 18px;
-}
-
 .movie__title--skeleton,
 .movie__year--skeleton {
   margin: 12px 0;
   width: 100%;
+}
+
+.movie__selected--figure--skeleton,
+.movie__selected--description--skeleton {
+  height: 550px;
+}
+
+.movie__selected--description--skeleton {
+  margin-left: 32px;
 }
 
 /* 

@@ -12,13 +12,16 @@ const MovieInfo = () => {
   const location = useLocation();
   const movieList = location.state;
   const [movieSelected, setMovieSelected] = useState([]);
+
   const [loading, setLoading] = useState(false);
 
   async function fetchSelectedMovie(imdbID) {
     setLoading(true);
 
     try {
-      const { data } = await axios.get(`${url}?i=${imdbID}&apikey=${apiKey}`);
+      const { data } = await axios.get(
+        `${url}?i=${imdbID}&plot=full&apikey=${apiKey}`
+      );
       setMovieSelected(data);
       console.log("data at MovieInfo.jsx, ", data);
     } catch (error) {
@@ -37,25 +40,32 @@ const MovieInfo = () => {
   return (
     <div className="movie__body">
       <div className="movie__container">
-        <div className="row">
+        <div className="movie__selected--top--row">
           <div className="movie__selected--top">
             <Link to={`/movies/${userInput}`} className="movie__link">
-              <FontAwesomeIcon icon="arrow-left" />
+              <FontAwesomeIcon icon="arrow-left" className="red arrow" />
             </Link>
             <Link to={`/movies/${userInput}`} className="movie__link">
-              <h2 className="movie__selected--title--top">Movies</h2>
+              <h2 className="movie__selected--title--top red">Movies</h2>
             </Link>
           </div>
+        </div>
 
-          <div className="movie__selected">
-            {movieSelected && (
+        <div className="movie__selected">
+          {loading ? (
+            <>
+              <div className="skeleton movie__selected--figure movie__selected--figure--skeleton"></div>
+              <div className="skeleton movie__selected--description movie__selected--description--skeleton"></div>
+            </>
+          ) : (
+            movieSelected && (
               <>
                 <figure className="movie__selected--figure">
                   <img
                     src={movieSelected.Poster}
                     alt="Movie Image"
                     className="movie__selected--img"
-                  ></img>
+                  />
                 </figure>
                 <div className="movie__selected--description">
                   <h2 className="movie__selected--title">
@@ -64,7 +74,7 @@ const MovieInfo = () => {
 
                   <div className="movie__selected--top__container">
                     <div className="movie__selected--lists__container">
-                      <ul className="movie__selected--lists">
+                      <ul className="movie__selected--info--lists">
                         <li className="movie__selected--list movie__selected--year">
                           {movieSelected.Year}
                         </li>
@@ -77,7 +87,6 @@ const MovieInfo = () => {
                       </ul>
                     </div>
 
-                    
                     {movieSelected.Ratings &&
                       movieSelected.Ratings.length > 0 && (
                         <div className="movie__selected--ratings__container">
@@ -102,37 +111,84 @@ const MovieInfo = () => {
 
                   {movieSelected.Genre && (
                     <div className="movie__selected--genre__container">
-                      <ul className="genre__lists">
-                        {movieSelected.Genre.split(", ").map((word, index) => (
-                          <li key={index} className="genre__list">
-                            {word}
+                      <ul className="movie__lists genre__lists">
+                        {movieSelected.Genre.split(", ").map((genre, index) => (
+                          <li key={index} className="movie__list genre__list">
+                            {genre}
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
 
-                  <div className="movie__selected--plot">
+                  <div className="movie__selected--row">
                     {movieSelected.Plot}
                   </div>
-                  <h2 className="movie__selected--director">
-                    Director: {movieSelected.Director}
-                  </h2>
-                  <h2 className="movie__selected--writer">
-                    Writers: {movieSelected.Writer}
-                  </h2>
-                  <h2 className="movie__selected--actor">
-                    Actors: {movieSelected.Actors}
-                  </h2>
+
+                  {movieSelected.Director && (
+                    <div className="movie__selected--row">
+                      <ul className="movie__lists">
+                        Directors
+                        {movieSelected.Director.split(", ").map(
+                          (director, index) => (
+                            <li key={index} className="movie__info__list blue">
+                              {director}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  )}
+
+                  {movieSelected.Writer && (
+                    <div className="movie__selected--row">
+                      <ul className="movie__lists">
+                        Writers
+                        {movieSelected.Writer.split(", ").map(
+                          (writer, index) => (
+                            <li key={index} className="movie__info__list blue">
+                              {writer}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  )}
+
+                  {movieSelected.Actors && (
+                    <div className="movie__selected--row movie__selected--actor">
+                      <ul className="movie__lists">
+                        Actors
+                        {movieSelected.Actors.split(", ").map(
+                          (actor, index) => (
+                            <li key={index} className="movie__info__list blue">
+                              {actor}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </>
-            )}
-          </div>
+            )
+          )}
         </div>
-        <Recommend movieSelected={movieSelected} movieList={movieList} />
+        {loading ? (
+          new Array(8).fill(0).map((_, index) => (
+            <div className="result__container--skeleton" key={index}>
+              <figure className="skeleton movie__img__container--skeleton"></figure>
+              <div>
+                <h2 className="skeleton movie__title--skeleton"></h2>
+                <h2 className="skeleton movie__year--skeleton"></h2>
+              </div>
+            </div>
+          ))
+        ) : (
+          <Recommend movieSelected={movieSelected} movieList={movieList} />
+        )}
       </div>
     </div>
   );
 };
-
 export default MovieInfo;
