@@ -1,8 +1,12 @@
 import React from "react";
 import Movie from "../pages/Movie";
 
-const Recommend = ({ movieSelected, movieList: initialMovieList }) => {
+const Recommend = ({ movieSelected, movieList : initialMovieList, userInput}) => {
   const movieList = initialMovieList.movieList;
+
+  console.log("userInput at Recommend.jsx", userInput);
+  console.log("movieList at Recommend.jsx", movieList);
+  
 
   return (
     <div className="recommend__container">
@@ -13,13 +17,14 @@ const Recommend = ({ movieSelected, movieList: initialMovieList }) => {
         {movieList &&
           movieList
             .filter(
-              (movie) =>
-                movie.imdbID !== movieSelected.imdbID ||
-                movie.Type == movieSelected.Type ||
-                movie.Year >= movieSelected.Year - 5 // only shows movies 5 years before the movie selected released year
+              (movie) => movie.imdbID !== movieSelected.imdbID
+              // movie.Type == movieSelected.Type &&
+              // movie.Year >= movieSelected.Year - 5 // only shows movies 5 years before the movie selected released year
             )
             .slice(0, 3)
-            .map((movie) => <Movie key={movie.imdbID} movie={movie} />)}
+            .map((movie) => (
+              <Movie key={movie.imdbID} movie={movie} userInput={userInput} />
+            ))}
       </div>
     </div>
   );

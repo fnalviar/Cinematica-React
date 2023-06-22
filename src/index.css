@@ -236,6 +236,20 @@ nav {
 }
 
 /* 
+  SEARCH SECTION
+*/
+
+.search__figure__container {
+  margin: 0 auto;
+  width: 50vw;
+}
+
+.search__image {
+  height: 100%;
+  width: 100%;
+}
+
+/* 
   MAIN SECTION
 */
 
@@ -429,6 +443,7 @@ nav {
 
 .user--input--results__title {
   font-weight: 700;
+  text-transform: capitalize;
 }
 
 .movie__title {
@@ -734,7 +749,6 @@ nav {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-
 /* 
   RECOMMENDED MOVIES SECTION
 */
@@ -749,11 +763,9 @@ nav {
 }
 
 .recommend__movies__container {
-display: flex;
-flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
-
-
 
 /* 
   SKELETON LOADING 

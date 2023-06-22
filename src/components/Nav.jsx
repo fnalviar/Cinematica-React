@@ -32,7 +32,7 @@ const Nav = () => {
             </Link>
           </li>
           <li className="nav__link">
-            <Link to="/" className="nav__link--anchor">
+            <Link to="/search" className="nav__link--anchor">
               Search
             </Link>
           </li>

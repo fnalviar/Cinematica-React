@@ -33,7 +33,6 @@ const Movies = () => {
         setMovieList(data.Search);
         setTotalResults(parseInt(data.totalResults));
 
-        // console.log("userInput at Movies.jsx, ", userInput);
         console.log("movieList at Movies.jsx, ", movieList);
       } catch (error) {
         console.log(error.message);
@@ -66,17 +65,6 @@ const Movies = () => {
     setMovieList(sortedMovies);
   }
 
-  function titleCaseUserInput(userInput) {
-    const titleCase = userInput
-      .toLowerCase()
-      .split(" ")
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(" ");
-    return titleCase;
-  }
-
   const totalPages = Math.ceil(totalResults / itemsPerPage);
 
   return (
@@ -86,10 +74,7 @@ const Movies = () => {
       <div className="movie--results--header__container">
         <h2 id="results__number" className="results__title">
           Search Results for{" "}
-          <span className="blue user--input--results__title">
-            {" "}
-            {titleCaseUserInput(userInput)}{" "}
-          </span>
+          <span className="blue user--input--results__title">{userInput}</span>
         </h2>
 
         <select

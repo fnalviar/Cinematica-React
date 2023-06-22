@@ -9,8 +9,7 @@ const MovieInfo = () => {
   const url = `https://www.omdbapi.com/`;
 
   const { imdbID, userInput } = useParams();
-  const location = useLocation();
-  const movieList = location.state;
+  const movieList = useLocation().state;
   const [movieSelected, setMovieSelected] = useState([]);
 
   const [loading, setLoading] = useState(false);
@@ -35,7 +34,7 @@ const MovieInfo = () => {
     if (imdbID !== "") {
       fetchSelectedMovie(imdbID);
     }
-  }, []);
+  }, [imdbID]);
 
   return (
     <div className="movie__body">
@@ -174,7 +173,7 @@ const MovieInfo = () => {
             )
           )}
         </div>
-        {loading ? (
+        {/* {loading ? (
           new Array(8).fill(0).map((_, index) => (
             <div className="result__container--skeleton" key={index}>
               <figure className="skeleton movie__img__container--skeleton"></figure>
@@ -185,7 +184,11 @@ const MovieInfo = () => {
             </div>
           ))
         ) : (
-          <Recommend movieSelected={movieSelected} movieList={movieList} />
+          <Recommend
+            movieSelected={movieSelected}
+            movieList={movieList}
+            userInput={userInput}
+          /> */}
         )}
       </div>
     </div>

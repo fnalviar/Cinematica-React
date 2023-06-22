@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import MovieInfo from "./pages/MovieInfo";
 import Footer from "./components/Footer";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/movie/:userInput/:imdbID" exact element={<MovieInfo />} />
           <Route path="/movies/:userInput" exact element={<Movies />} />
         </Routes>
