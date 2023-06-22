@@ -2,16 +2,15 @@ import React, { useEffect } from "react";
 import logo from "../assets/Cinematica_logo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from "../ui/Modal";
 
 const Nav = () => {
   function openMenu() {
     document.body.classList += " menu__open";
-    // document.getElementById("menu__backdrop__container").style.display = "block";
   }
 
   function closeMenu() {
     document.body.classList.remove("menu__open");
-    // document.getElementById("menu__backdrop__container").style.display = "none";
   }
 
   return (
@@ -71,6 +70,8 @@ const Nav = () => {
           </div>
         </div>
       </nav>
+
+      <Modal />
     </div>
   );
 };

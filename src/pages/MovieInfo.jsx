@@ -49,7 +49,6 @@ const MovieInfo = () => {
             </Link>
           </div>
         </div>
-
         <div className="movie__selected">
           {loading ? (
             <>
@@ -188,8 +187,8 @@ const MovieInfo = () => {
             movieSelected={movieSelected}
             movieList={movieList}
             userInput={userInput}
-          /> */}
-        )}
+          />
+        )} */}
       </div>
     </div>
   );

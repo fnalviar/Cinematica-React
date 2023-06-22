@@ -36,6 +36,12 @@ const Movie = ({ movie, userInput, movieList }) => {
             <h3 className="movie--type">{movie.Type}</h3>
           </figure>
         )}
+        <div className="movie--learn--more__container">
+          <h2 className="learn--more">
+            Learn More
+            <FontAwesomeIcon icon={"arrow-right"} className="arrow--right"/>
+          </h2>
+        </div>
       </figure>
 
       <h2 className="movie__title">
