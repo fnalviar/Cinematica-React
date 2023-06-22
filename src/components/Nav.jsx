@@ -9,15 +9,12 @@ const Nav = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   function toggleModal() {
-    if (isModalOpen) {
-      document.body.classList.remove("modal--open");
-    }
-    setModalOpen(true);
-    document.body.classList.add("modal--open");
+    setModalOpen(!isModalOpen);
+    document.body.classList.toggle("modal--open");
   }
 
   function openMenu() {
-    document.body.classList += " menu__open";
+    document.body.classList += " menu--open";
   }
 
   return (
@@ -51,11 +48,11 @@ const Nav = () => {
               Contact Us
             </Link>
           </li>
-          <button className="" onClick={openMenu}>
-            
-            <FontAwesomeIcon icon="bars" />
-          </button>
         </ul>
+
+        <button className="btn__menu" onClick={openMenu}>
+          <FontAwesomeIcon icon="bars" />
+        </button>
 
         <MenuBackDrop toggleModal={toggleModal} />
       </nav>

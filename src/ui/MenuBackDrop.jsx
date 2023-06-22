@@ -1,16 +1,17 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const MenuBackDrop = ({ toggleModal }) => {
   function closeMenu() {
-    document.body.classList.remove("menu__open");
+    document.body.classList.remove("menu--open");
   }
 
   return (
     <div className="menu__backdrop__container">
       <div className="menu__backdrop">
         <button className="btn__menu btn__menu--close" onClick={closeMenu}>
-          <i className="fas fa-times" aria-hidden="true"></i>
+          <FontAwesomeIcon icon={"times"} aria-hidden="true" />
         </button>
         <ul className="menu__links">
           <li className="menu__list">
