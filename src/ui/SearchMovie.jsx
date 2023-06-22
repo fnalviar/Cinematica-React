@@ -12,11 +12,13 @@ const SearchMovie = () => {
     event.preventDefault();
     setLoading(true);
 
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      navigate(`/movies/${userInput}`);
-    } finally {
-      setLoading(false);
+    if (userInput.trim() !== "") {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        navigate(`/movies/${userInput}`);
+      } finally {
+        setLoading(false);
+      }
     }
   }
 
@@ -30,8 +32,11 @@ const SearchMovie = () => {
             className="search__field"
             placeholder="Search by movie or series title"
             onChange={(event) => setUserInput(event.target.value)}
+            // onKeyDown={(event) => event.key === "Enter" && searchHandler(event)}
             onKeyDown={(event) => {
-              event.key === "Enter" && searchHandler(event);
+              if (event.key === "Enter" && userInput.trim() !== "") {
+                searchHandler(event);
+              }
             }}
             value={userInput}
           />
@@ -41,9 +46,11 @@ const SearchMovie = () => {
               <FontAwesomeIcon icon={"spinner"} />
             </button>
           ) : (
-            <button className="btn btn--search" onClick={searchHandler}>
-              Search
-            </button>
+            userInput.trim() !== "" && (
+              <button className="btn btn--search" onClick={searchHandler}>
+                Search
+              </button>
+            )
           )}
         </form>
       </div>

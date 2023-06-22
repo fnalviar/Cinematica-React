@@ -80,7 +80,7 @@ const Modal = ({ toggleModal }) => {
               ></textarea>
             </div>
 
-            <button id="contact__submit" className="form__submit">
+            <button id="contact__submit" className="btn form__submit">
               {loadingVisible ? <FontAwesomeIcon icon={"spinner"} /> : "Submit"}
             </button>
           </form>

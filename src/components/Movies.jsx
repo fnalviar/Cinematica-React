@@ -11,8 +11,6 @@ const Movies = () => {
 
   const { userInput } = useParams();
 
-  // const fullApi = `https://www.omdbapi.com/?s=Ant&apikey=11aed1bd`;
-
   let navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
