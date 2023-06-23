@@ -1,22 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Movie from "../pages/Movie";
-import SearchMovie from "../ui/SearchMovie";
 import PageResult from "../ui/PageResult";
+import SearchMovie from "../ui/SearchMovie";
 
 const Movies = () => {
   const apiKey = `11aed1bd`;
   const url = `https://www.omdbapi.com/`;
 
+  const itemsPerPage = 10; // OMDBapi only display 10 movies per page
   const { userInput } = useParams();
-
-  let navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [movieList, setMovieList] = useState([]);
 
-  const itemsPerPage = 10; // OMDBapi only display 10 movies per page
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
 

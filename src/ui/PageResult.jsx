@@ -24,7 +24,7 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
     <div className="page__button__container">
       {currentPage != 1 && (
         <button
-          className="btn left__button--page"
+          className="btn button--page"
           onClick={previousPageHandler}
         >
           <FontAwesomeIcon icon={"arrow-left"} />
@@ -48,7 +48,7 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
       </div>
 
       {currentPage != totalPages && (
-        <button className="btn right__button--page" onClick={nextPageHandler}>
+        <button className="btn button--page" onClick={nextPageHandler}>
           <FontAwesomeIcon icon={"arrow-right"} />
         </button>
       )}
