@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div id="footer">
+    <div className="footer">
       <div className="footer__container">
         <p className="footer__para">
           By continuing past this page, you agree to our

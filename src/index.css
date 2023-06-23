@@ -42,13 +42,12 @@ button {
     GENERAL
 */
 
-#nav,
-#main,
-#search__result,
-#movieResults,
+.nav,
+.main,
 .movie__body,
 .search__bar__container,
-.movie--results--header__container {
+.movie--results--header__container,
+.movie__results__container {
   padding: 0 16px;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -272,7 +271,7 @@ nav {
   MAIN SECTION
 */
 
-#main {
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -384,25 +383,20 @@ nav {
 
 .row {
   display: flex;
-  align-items: stretch; /* Aligns items to stretch vertically */
   flex-wrap: wrap;
-  padding: 42px 0;
 }
 
-.movie__result__container,
-.result__container--skeleton {
-  padding-bottom: 18px;
-  margin: 18px;
-  width: 30%;
+.movie__result__container {
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  padding: 18px;
+  width: 25%;
   overflow-y: hidden;
 }
 
 .movie__img__container {
   position: relative;
+  height: 450px;
 }
 
 .movie--learn--more__container {
@@ -429,7 +423,6 @@ nav {
   transform: translateY(0);
 }
 
-/* .movie__img__container, */
 .no--image__container,
 .movie__img__container--skeleton {
   position: relative;
@@ -466,6 +459,7 @@ nav {
 .no--image {
   width: 100%;
   height: 100%;
+  border-radius: 1rem;
   transition: all 300ms ease;
 }
 
@@ -479,9 +473,15 @@ nav {
 
 .movie--results--header__container {
   display: flex;
+  align-items: center;
+}
+
+.movie--results--header--row {
+  display: flex;
   justify-content: space-between;
+  width: 100%;
   margin: 24px 0;
-  padding: 0 34px;
+  padding: 0 18px;
 }
 
 .results__title {
@@ -846,7 +846,7 @@ nav {
 }
 
 .result__container--skeleton {
-  width: 25%;
+  width: 22%;
   width: 300px;
   height: 600px;
   margin-bottom: 18px;
@@ -874,7 +874,7 @@ nav {
     FOOTER SECTION
 */
 
-#footer {
+.footer {
   padding: 24px 16px;
   background-color: #1f262d;
   color: #fff;
@@ -896,23 +896,38 @@ nav {
 /* 
   RESPONSIVE DESIGN
 */
+
+@media (max-width: 1200px) {
+  .movie__img__container {
+    height: 400px;
+  }
+}
+
+@media (max-width: 1111px) {
+  .row {
+    margin: 0 auto;
+  }
+
+  .movie__result__container {
+    width: calc((100% / 3));
+  }
+}
+
 @media (max-width: 1020px) {
   .result__container {
     width: calc(100% / 3);
   }
 
   .movie__img__container {
-    height: 300px;
-  }
-}
-
-@media (max-width: 1111px) {
-  .movie__result__container {
-    /* width: 25%; */
+    height: 380px;
   }
 }
 
 @media (max-width: 900px) {
+  .movie__img__container {
+    height: 360px;
+  }
+
   .search__title {
     font-size: 24px;
   }
@@ -924,9 +939,7 @@ nav {
   .movie__year {
     font-size: 16px;
   }
-}
 
-@media (max-width: 900px) {
   .right__button--page {
     font-size: 18px;
   }
@@ -934,6 +947,10 @@ nav {
 
 /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
 @media (max-width: 768px) {
+  .movie__img__container {
+    height: 350px;
+  }
+
   .search__title {
     font-size: 20px;
   }
@@ -956,14 +973,19 @@ nav {
     padding: 8px;
   }
 
-  .movie__img__container {
-    width: 200px;
-    height: 250px;
-  }
-
   .right__button--page {
     font-size: 16px;
   }
+}
+
+@media (max-width: 690px) {
+  .results__title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+
 }
 
 /* SMALL PHONES, LARGE SMARTPHONES */
@@ -988,13 +1010,27 @@ nav {
     font-size: 18px;
   }
 
+  .movie--results--header--row {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 50%;
+    padding: 18px;
+  }
+
+
   .row {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .result__container {
     padding: 8px;
     width: 80%;
+  }
+
+  .movie__img__container {
+    height: 280px;
   }
 
   .search__field,
@@ -1007,7 +1043,12 @@ nav {
   }
 
   .results__title {
-    font-size: 22px;
+    padding-bottom: 18px;
+    font-size: 18px;
+  }
+
+  .sort__elements {
+    width: 100%;
   }
 
   .movie__title {
@@ -1042,5 +1083,11 @@ nav {
 
   .right__button--page {
     padding: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .modal__contact {
+      padding: 40px;
+    }
   }
 }

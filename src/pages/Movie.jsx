@@ -39,20 +39,24 @@ const Movie = ({ movie, userInput, movieList }) => {
         <div className="movie--learn--more__container">
           <h2 className="learn--more">
             Learn More
-            <FontAwesomeIcon icon={"arrow-right"} className="arrow--right"/>
+            <FontAwesomeIcon icon={"arrow-right"} className="arrow--right" />
           </h2>
         </div>
       </figure>
 
-      <h2 className="movie__title">
-        <i> {movie.Title} </i>
-      </h2>
-      <h2 className="movie__year">
-        <span className="calendar__icon">
-          <FontAwesomeIcon icon={"calendar"} />
-        </span>
-        {movie.Year}
-      </h2>
+      <div className="movie__title__container">
+        <h3 className="movie__title">
+          <i> {movie.Title} </i>
+        </h3>
+      </div>
+      <div className="movie__year__container">
+        <h3 className="movie__year">
+          <span className="calendar__icon">
+            <FontAwesomeIcon icon={"calendar"} />
+          </span>
+          {movie.Year}
+        </h3>
+      </div>
     </div>
   );
 };

@@ -70,47 +70,53 @@ const Movies = () => {
       <SearchMovie />
 
       <div className="movie--results--header__container">
-        <h2 id="results__number" className="results__title">
-          Search Results for{" "}
-          <span className="blue user--input--results__title">{userInput}</span>
-        </h2>
+        <div className="movie--results--header--row">
+          <h2 className="results__title">
+            Search Results for{" "}
+            <span className="blue user--input--results__title">
+              {userInput}
+            </span>
+          </h2>
 
-        <select
-          className="sort__elements"
-          id="filter"
-          defaultValue="DEFAULT"
-          onChange={(event) => filterMovies(event.target.value)}
-        >
-          <option value="" disabled>
-            Sort
-          </option>
-          <option value="ASCENDING_TITLE">Title, A-Z</option>
-          <option value="DESCENDING_TITLE">Title, Z-A</option>
-          <option value="OLDEST_TO_NEWEST">Year, Oldest to Newest</option>
-          <option value="NEWEST_TO_OLDEST">Year, Newest to Oldest</option>
-        </select>
+          <select
+            className="sort__elements"
+            id="filter"
+            defaultValue="DEFAULT"
+            onChange={(event) => filterMovies(event.target.value)}
+          >
+            <option value="" disabled>
+              Sort
+            </option>
+            <option value="ASCENDING_TITLE">Title, A-Z</option>
+            <option value="DESCENDING_TITLE">Title, Z-A</option>
+            <option value="OLDEST_TO_NEWEST">Year, Oldest to Newest</option>
+            <option value="NEWEST_TO_OLDEST">Year, Newest to Oldest</option>
+          </select>
+        </div>
       </div>
 
-      <div id="movieResults" className="row">
-        {loading
-          ? Array.from({ length: itemsPerPage }).map((_, index) => (
-              <div className="result__container--skeleton" key={index}>
-                <figure className="skeleton movie__img__container--skeleton"></figure>
-                <div>
-                  <h2 className="skeleton movie__title--skeleton"></h2>
-                  <h2 className="skeleton movie__year--skeleton"></h2>
+      <div className="movie__results__container">
+        <div className="row">
+          {loading
+            ? Array.from({ length: itemsPerPage }).map((_, index) => (
+                <div className="result__container--skeleton" key={index}>
+                  <figure className="skeleton movie__img__container--skeleton"></figure>
+                  <div>
+                    <h2 className="skeleton movie__title--skeleton"></h2>
+                    <h2 className="skeleton movie__year--skeleton"></h2>
+                  </div>
                 </div>
-              </div>
-            ))
-          : movieList &&
-            movieList.map((movie) => (
-              <Movie
-                key={movie.imdbID}
-                movie={movie}
-                userInput={userInput}
-                movieList={movieList}
-              />
-            ))}
+              ))
+            : movieList &&
+              movieList.map((movie) => (
+                <Movie
+                  key={movie.imdbID}
+                  movie={movie}
+                  userInput={userInput}
+                  movieList={movieList}
+                />
+              ))}
+        </div>
       </div>
       <div className="bottom__page--result">
         <PageResult

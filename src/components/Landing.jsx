@@ -4,7 +4,7 @@ import landingMovieImage from "../assets/landing_movies.png";
 
 const Landing = () => {
   return (
-    <div id="main">
+    <div className="main">
       <div className="header__container">
         <div className="header__description">
           <h1 className="header__title">
