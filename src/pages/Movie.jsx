@@ -17,7 +17,7 @@ const Movie = ({ movie, userInput, movieList }) => {
       }
     >
       <figure className="movie__img__container">
-        {movie.Poster != "N/A" ? (
+        {movie.Poster !== "N/A" ? (
           <img src={movie.Poster} alt="Movie Image" className="movie__img" />
         ) : (
           <NoPoster />

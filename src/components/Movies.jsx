@@ -40,9 +40,9 @@ const Movies = () => {
 
   useEffect(() => {
     if (userInput !== null) {
-      fetchMovies(userInput, 1);
       setCurrentPage(1);
       setMovieList([]);
+      fetchMovies(userInput, 1);
     }
   }, [userInput]);
 

@@ -34,7 +34,7 @@ const MovieInfo = () => {
     if (imdbID !== "") {
       fetchSelectedMovie(imdbID);
     }
-  }, [imdbID]);
+  }, [imdbID, fetchSelectedMovie]);
 
   return (
     <div className="movie__body">
@@ -61,7 +61,7 @@ const MovieInfo = () => {
                 <figure className="movie__selected--figure">
                   <img
                     src={movieSelected.Poster}
-                    alt="Movie Image"
+                    alt="Movie"
                     className="movie__selected--img"
                   />
                 </figure>

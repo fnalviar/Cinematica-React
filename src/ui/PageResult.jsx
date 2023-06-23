@@ -5,28 +5,29 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   function nextPageHandler() {
-    setCurrentPage((prevPage) => prevPage + 1);
-    fetchMovies(userInput, currentPage);
+    const nextPage = currentPage + 1;
+    setCurrentPage(nextPage);
+    fetchMovies(userInput, nextPage);
   }
-
+  
   function previousPageHandler() {
-    setCurrentPage((prevPage) => prevPage - 1);
-    fetchMovies(userInput, currentPage);
+    const previousPage = currentPage - 1;
+    setCurrentPage(previousPage);
+    fetchMovies(userInput, previousPage);
   }
 
   function userInputPageHandler(event) {
     const userInputPage = parseInt(event.target.value);
     setCurrentPage(userInputPage);
-    fetchMovies(userInput, currentPage);
+    fetchMovies(userInput, userInputPage);
   }
+
+  console.log("currentPage at PageResult", currentPage);
 
   return (
     <div className="page__button__container">
-      {currentPage != 1 && (
-        <button
-          className="btn button--page"
-          onClick={previousPageHandler}
-        >
+      {currentPage !== 1 && (
+        <button className="btn button--page" onClick={previousPageHandler}>
           <FontAwesomeIcon icon={"arrow-left"} />
         </button>
       )}
@@ -38,7 +39,7 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
             value={currentPage}
             onChange={(event) => setCurrentPage(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key == "Enter" && event.target.value !== "0") {
+              if (event.key === "Enter" && event.target.value !== "0") {
                 userInputPageHandler(event);
               }
             }}
@@ -47,7 +48,7 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
         </h2>
       </div>
 
-      {currentPage != totalPages && (
+      {currentPage !== totalPages && (
         <button className="btn button--page" onClick={nextPageHandler}>
           <FontAwesomeIcon icon={"arrow-right"} />
         </button>
