@@ -1,26 +1,27 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React from "react";
 
-const PageResult = ({ fetchMovies, totalPages, userInput }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const PageResult = ({ fetchMovies, totalPages, userInput, currentPage, pageChangeHandler }) => {
 
   function nextPageHandler() {
     const nextPage = currentPage + 1;
-    setCurrentPage(nextPage);
+    pageChangeHandler(nextPage);
     fetchMovies(userInput, nextPage);
   }
   
   function previousPageHandler() {
     const previousPage = currentPage - 1;
-    setCurrentPage(previousPage);
+    pageChangeHandler(previousPage);
     fetchMovies(userInput, previousPage);
   }
 
   function userInputPageHandler(event) {
     const userInputPage = parseInt(event.target.value);
-    setCurrentPage(userInputPage);
+    pageChangeHandler(userInputPage);
     fetchMovies(userInput, userInputPage);
   }
+
+  
 
   console.log("currentPage at PageResult", currentPage);
 
@@ -32,12 +33,13 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
         </button>
       )}
       <div className="page--number--results__container">
-        <h2>
+        <h2 className="page--number__container">
           <input
             type="number"
             className="page--number"
             value={currentPage}
-            onChange={(event) => setCurrentPage(event.target.value)}
+            // onChange={(event) => setCurrentPage(event.target.value)}
+            onChange={userInputPageHandler}
             onKeyDown={(event) => {
               if (event.key === "Enter" && event.target.value !== "0") {
                 userInputPageHandler(event);

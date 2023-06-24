@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Movie from "../pages/Movie";
 import PageResult from "../ui/PageResult";
 import SearchMovie from "../ui/SearchMovie";
+import NoMovie from "../exception/NoMovie";
 
 const Movies = () => {
   const apiKey = `11aed1bd`;
@@ -61,7 +62,13 @@ const Movies = () => {
     setMovieList(sortedMovies);
   }
 
+  function pageChangeHandler(page) {
+    setCurrentPage(page);
+  }
+
   const totalPages = Math.ceil(totalResults / itemsPerPage);
+
+  console.log("currentPage at Movies.jsx", currentPage);
 
   return (
     <>
@@ -95,34 +102,42 @@ const Movies = () => {
 
       <div className="movie__results__container">
         <div className="row">
-          {loading
-            ? Array.from({ length: itemsPerPage }).map((_, index) => (
-                <div className="result__container--skeleton" key={index}>
-                  <figure className="skeleton movie__img__container--skeleton"></figure>
-                  <div>
-                    <h2 className="skeleton movie__title--skeleton"></h2>
-                    <h2 className="skeleton movie__year--skeleton"></h2>
-                  </div>
+          {loading ? (
+            Array.from({ length: itemsPerPage }).map((_, index) => (
+              <div className="result__container--skeleton" key={index}>
+                <figure className="skeleton movie__img__container--skeleton"></figure>
+                <div>
+                  <h2 className="skeleton movie__title--skeleton"></h2>
+                  <h2 className="skeleton movie__year--skeleton"></h2>
                 </div>
-              ))
-            : movieList &&
-              movieList.map((movie) => (
-                <Movie
-                  key={movie.imdbID}
-                  movie={movie}
-                  userInput={userInput}
-                  movieList={movieList}
-                />
-              ))}
+              </div>
+            ))
+          ) : movieList ? (
+            movieList.map((movie) => (
+              <Movie
+                key={movie.imdbID}
+                movie={movie}
+                userInput={userInput}
+                movieList={movieList}
+              />
+            ))
+          ) : (
+            <NoMovie />
+          )}
         </div>
       </div>
-      <div className="bottom__page--result">
-        <PageResult
-          fetchMovies={fetchMovies}
-          totalPages={totalPages}
-          userInput={userInput}
-        />
-      </div>
+
+      {movieList && (
+        <div className="bottom__page--result">
+          <PageResult
+            fetchMovies={fetchMovies}
+            totalPages={totalPages}
+            userInput={userInput}
+            currentPage={currentPage}
+            pageChangeHandler={pageChangeHandler}
+          />
+        </div>
+      )}
     </>
   );
 };

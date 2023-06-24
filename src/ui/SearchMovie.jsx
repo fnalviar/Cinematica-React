@@ -10,9 +10,9 @@ const SearchMovie = () => {
 
   async function searchHandler(event) {
     event.preventDefault();
-    setLoading(true);
 
     if (userInput.trim() !== "") {
+      setLoading(true);
       try {
         await new Promise((resolve) => setTimeout(resolve, 500));
         navigate(`/movies/${userInput}`);
@@ -21,6 +21,7 @@ const SearchMovie = () => {
       }
     }
   }
+
 
   return (
     <>
@@ -46,11 +47,9 @@ const SearchMovie = () => {
               <FontAwesomeIcon icon={"spinner"} />
             </button>
           ) : (
-            userInput.trim() !== "" && (
-              <button className="btn btn--search" onClick={searchHandler}>
-                Search
-              </button>
-            )
+            <button className="btn btn--search" onClick={searchHandler}>
+              <FontAwesomeIcon icon={"search"} />
+            </button>
           )}
         </form>
       </div>

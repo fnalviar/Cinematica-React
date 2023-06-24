@@ -14,6 +14,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home" exact element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/movie/:userInput/:imdbID" exact element={<MovieInfo />} />
           <Route path="/movies/:userInput" exact element={<Movies />} />

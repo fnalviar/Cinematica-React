@@ -7,7 +7,7 @@ const ServiceUnavailable = () => {
       <p className="service__para">
         We appologize for the incovenience. But the contact form service is
         temporarily unavailable. Please contact us directly at
-        cinematica@email.ca
+        cinematica@email.ca and we'll get back to you in 1-2 business days.
       </p>
     </div>
   );

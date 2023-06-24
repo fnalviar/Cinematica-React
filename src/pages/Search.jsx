@@ -19,7 +19,7 @@ const Search = () => {
       <div className="search--content__container">
         <div className="search__description">
           <h2 className="search__title">
-            Search <span className="blue">Cinematica!</span>
+            Search <span className="blue company-name--search">Cinematica!</span>
           </h2>
         </div>
 

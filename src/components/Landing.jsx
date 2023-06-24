@@ -12,7 +12,7 @@ const Landing = () => {
           </h1>
           <h2 className="header__subtitle">
             FIND WHAT TO BINCH WATCH NEXT WITH
-            <span className="blue"> CINEMATICA!</span>
+            <span className="blue company-name"> CINEMATICA!</span>
           </h2>
         </div>
         <SearchMovie />
