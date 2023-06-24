@@ -1168,10 +1168,6 @@ nav {
     font-size: 16px;
   }
 
-  .modal {
-    height: 450px;
-  }
-
   .modal__contact {
     height: fit-content;
     padding: 40px;
