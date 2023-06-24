@@ -44,7 +44,7 @@ const PageResult = ({ fetchMovies, totalPages, userInput }) => {
               }
             }}
           />
-          /{totalPages}
+          / {totalPages}
         </h2>
       </div>
 

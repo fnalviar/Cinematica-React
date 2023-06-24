@@ -34,7 +34,7 @@ const MovieInfo = () => {
     if (imdbID !== "") {
       fetchSelectedMovie(imdbID);
     }
-  }, [imdbID, fetchSelectedMovie]);
+  }, [imdbID]);
 
   return (
     <div className="movie__body">
@@ -42,10 +42,10 @@ const MovieInfo = () => {
         <div className="movie__selected--top--row">
           <div className="movie__selected--top">
             <Link to={`/movies/${userInput}`} className="movie__link">
-              <FontAwesomeIcon icon="arrow-left" className="red arrow" />
+              <FontAwesomeIcon icon="arrow-left" className="blue arrow" />
             </Link>
             <Link to={`/movies/${userInput}`} className="movie__link">
-              <h2 className="movie__selected--title--top red">Movies</h2>
+              <h2 className="movie__selected--title--top blue">Movies</h2>
             </Link>
           </div>
         </div>
@@ -126,7 +126,9 @@ const MovieInfo = () => {
                   {movieSelected.Director && (
                     <div className="movie__selected--row">
                       <ul className="movie__lists">
+                        <div className="movie__list--title">
                         Directors
+                        </div>
                         {movieSelected.Director.split(", ").map(
                           (director, index) => (
                             <li key={index} className="movie__info__list blue">
@@ -141,7 +143,9 @@ const MovieInfo = () => {
                   {movieSelected.Writer && (
                     <div className="movie__selected--row">
                       <ul className="movie__lists">
+                      <div className="movie__list--title">
                         Writers
+                        </div>
                         {movieSelected.Writer.split(", ").map(
                           (writer, index) => (
                             <li key={index} className="movie__info__list blue">
@@ -156,7 +160,9 @@ const MovieInfo = () => {
                   {movieSelected.Actors && (
                     <div className="movie__selected--row movie__selected--actor">
                       <ul className="movie__lists">
+                      <div className="movie__list--title">
                         Actors
+                        </div>
                         {movieSelected.Actors.split(", ").map(
                           (actor, index) => (
                             <li key={index} className="movie__info__list blue">
