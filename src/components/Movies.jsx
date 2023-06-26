@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import NoMovie from "../components/exception/NoMovie";
+import PageResult from "../components/ui/PageResult";
+import SearchMovie from "../components/ui/SearchMovie";
 import Movie from "../pages/Movie";
-import PageResult from "../ui/PageResult";
-import SearchMovie from "../ui/SearchMovie";
-import NoMovie from "../exception/NoMovie";
 
 const Movies = () => {
   const apiKey = `11aed1bd`;

@@ -1,5 +1,5 @@
 import React from "react";
-import NoImageAvailable from "../assets/no-image-available.jpg";
+import NoImageAvailable from "../../assets/no-image-available.jpg";
 
 const NoPoster = () => {
   return (

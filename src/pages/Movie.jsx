@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import NoPoster from "../exception/NoPoster";
+import NoPoster from "../components/exception/NoPoster";
 
 const Movie = ({ movie, userInput, movieList }) => {
   let navigate = useNavigate();

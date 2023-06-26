@@ -497,6 +497,7 @@ nav {
 }
 
 .movie__img__container:hover .movie--learn--more__container {
+  cursor: pointer;
   opacity: 1;
   transform: translateY(0);
 }

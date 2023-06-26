@@ -1,5 +1,5 @@
 import React from "react";
-import SearchMovie from "../ui/SearchMovie";
+import SearchMovie from "../components/ui/SearchMovie";
 import landingMovieImage from "../assets/landing_movies.png";
 
 const Landing = () => {

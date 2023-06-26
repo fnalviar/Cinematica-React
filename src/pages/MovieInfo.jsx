@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import Recommend from "../ui/Recommend.jsx";
 
 const MovieInfo = () => {
   const apiKey = `11aed1bd`;
@@ -126,9 +125,7 @@ const MovieInfo = () => {
                   {movieSelected.Director && (
                     <div className="movie__selected--row">
                       <ul className="movie__lists">
-                        <div className="movie__list--title">
-                        Directors
-                        </div>
+                        <div className="movie__list--title">Directors</div>
                         {movieSelected.Director.split(", ").map(
                           (director, index) => (
                             <li key={index} className="movie__info__list blue">
@@ -143,9 +140,7 @@ const MovieInfo = () => {
                   {movieSelected.Writer && (
                     <div className="movie__selected--row">
                       <ul className="movie__lists">
-                      <div className="movie__list--title">
-                        Writers
-                        </div>
+                        <div className="movie__list--title">Writers</div>
                         {movieSelected.Writer.split(", ").map(
                           (writer, index) => (
                             <li key={index} className="movie__info__list blue">
@@ -160,9 +155,7 @@ const MovieInfo = () => {
                   {movieSelected.Actors && (
                     <div className="movie__selected--row movie__selected--actor">
                       <ul className="movie__lists">
-                      <div className="movie__list--title">
-                        Actors
-                        </div>
+                        <div className="movie__list--title">Actors</div>
                         {movieSelected.Actors.split(", ").map(
                           (actor, index) => (
                             <li key={index} className="movie__info__list blue">
@@ -178,23 +171,6 @@ const MovieInfo = () => {
             )
           )}
         </div>
-        {/* {loading ? (
-          new Array(8).fill(0).map((_, index) => (
-            <div className="result__container--skeleton" key={index}>
-              <figure className="skeleton movie__img__container--skeleton"></figure>
-              <div>
-                <h2 className="skeleton movie__title--skeleton"></h2>
-                <h2 className="skeleton movie__year--skeleton"></h2>
-              </div>
-            </div>
-          ))
-        ) : (
-          <Recommend
-            movieSelected={movieSelected}
-            movieList={movieList}
-            userInput={userInput}
-          />
-        )} */}
       </div>
     </div>
   );

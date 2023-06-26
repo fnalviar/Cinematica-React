@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import logo from "../assets/Cinematica_logo.png";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Modal from "../ui/Modal";
-import MenuBackDrop from "../ui/MenuBackDrop";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/Cinematica_logo.png";
+import MenuBackDrop from "../components/ui/MenuBackDrop";
+import Modal from "../components/ui/Modal";
 
 const Nav = () => {
   const [isModalOpen, setModalOpen] = useState(false);

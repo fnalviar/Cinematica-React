@@ -38,7 +38,6 @@ const PageResult = ({ fetchMovies, totalPages, userInput, currentPage, pageChang
             type="number"
             className="page--number"
             value={currentPage}
-            // onChange={(event) => setCurrentPage(event.target.value)}
             onChange={userInputPageHandler}
             onKeyDown={(event) => {
               if (event.key === "Enter" && event.target.value !== "0") {

@@ -1,7 +1,7 @@
 import React from "react";
 import UndrawSearch from "../assets/undraw_search.svg";
 import PopCorn from "../assets/popcorn.jpg";
-import SearchMovie from "../ui/SearchMovie";
+import SearchMovie from "../components/ui/SearchMovie";
 
 const Search = () => {
   return (
